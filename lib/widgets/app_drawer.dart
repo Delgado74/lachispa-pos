@@ -114,41 +114,61 @@ class AppDrawer extends StatelessWidget {
 
   void _showLanguageSelector(BuildContext context) {
     final languageProvider = context.read<LanguageProvider>();
+    final l10n = AppLocalizations.of(context)!;
     final languages = languageProvider.getAvailableLanguages();
 
     showModalBottomSheet(
       context: context,
       backgroundColor: AppTheme.cardColor,
-      builder: (ctx) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              AppLocalizations.of(context)!.select_language,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ...languages.map(
-            (lang) => ListTile(
-              leading: Text(
-                lang['flag']!,
-                style: const TextStyle(fontSize: 24),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (ctx) => Container(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.5,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                l10n.select_language,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              title: Text(lang['name']!),
-              trailing:
-                  languageProvider.currentLocale.languageCode == lang['code']
-                  ? const Icon(Icons.check, color: AppTheme.primaryColor)
-                  : null,
-              onTap: () {
-                languageProvider.changeLanguage(Locale(lang['code']!));
-                Navigator.pop(ctx);
-                onLanguageChanged?.call();
-              },
             ),
-          ),
-          const SizedBox(height: 16),
-        ],
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: languages.length,
+                itemBuilder: (context, index) {
+                  final lang = languages[index];
+                  return ListTile(
+                    leading: Text(
+                      lang['flag']!,
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    title: Text(lang['name']!),
+                    trailing:
+                        languageProvider.currentLocale.languageCode ==
+                            lang['code']
+                        ? const Icon(Icons.check, color: AppTheme.primaryColor)
+                        : null,
+                    onTap: () {
+                      languageProvider.changeLanguage(Locale(lang['code']!));
+                      Navigator.pop(ctx);
+                      onLanguageChanged?.call();
+                    },
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
