@@ -47,7 +47,7 @@ LaChispaPOS es una aplicación de punto de venta (POS) que permite cobrar en Bit
 ## Monedas Soportadas
 
 - CUP (Peso Cubano)
-- MLC (Peso Cubano Convertible)
+- MLC (Moneda Convertible - CBDC)
 - USD (Dólar Estadounidense)
 - EUR (Euro)
 - GBP (Libra Esterlina)

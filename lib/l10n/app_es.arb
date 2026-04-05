@@ -64,7 +64,8 @@
   "currency_usd": "USD - Dólar",
   "currency_eur": "EUR - Euro",
   "currency_cup": "CUP - Peso Cubano",
-  "currency_mlc": "MLC - Peso Convertible",
+  "currency_mlc": "MLC - Moneda Convertible",
+  "mlc_full_name": "MLC - Moneda Convertible (CBDC)"
   "currency_gbp": "GBP - Libra Esterlina",
   "currency_cad": "CAD - Dólar Canadiense",
   "currency_jpy": "JPY - Yen Japonés",
@@ -126,7 +127,7 @@
   "how_to_connect": "CÓMO CONECTAR",
   "steps_title": "Pasos para conectar:",
   "developed_with": "Desarrollado con",
-  "mlc_full_name": "MLC - Peso Convertible",
+  "mlc_full_name": "MLC - Moneda Convertible (CBDC)",
   "no_sales_to_export": "No hay ventas para exportar",
   "sales_deleted": "Ventas eliminadas",
   "employee": "Dependiente",
