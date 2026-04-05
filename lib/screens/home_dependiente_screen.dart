@@ -32,27 +32,28 @@ class _HomeDependienteScreenState extends State<HomeDependienteScreen> {
   }
 
   void _showRecoveryDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.cardColor,
-        title: const Text('Venta Pendiente'),
-        content: const Text('Tiene una venta pendiente. ¿Desea retomarla?'),
+        title: Text(l10n.pending_sale_title),
+        content: Text(l10n.pending_sale_confirm),
         actions: [
           TextButton(
             onPressed: () {
               context.read<CartProvider>().clearCart();
               Navigator.pop(ctx);
             },
-            child: const Text('Descartar'),
+            child: Text(l10n.discard_sale),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(ctx);
               Navigator.pushNamed(context, '/sale');
             },
-            child: const Text('Retomar'),
+            child: Text(l10n.retomar),
           ),
         ],
       ),
@@ -63,15 +64,16 @@ class _HomeDependienteScreenState extends State<HomeDependienteScreen> {
     final salesProvider = context.read<SalesProvider>();
     final authProvider = context.read<AuthProvider>();
     final user = authProvider.currentUser;
+    final l10n = AppLocalizations.of(context)!;
 
     if (user == null) return;
 
     final sales = await salesProvider.getSalesByUser(user.id);
     if (sales.isEmpty) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No hay ventas para exportar')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.no_sales_to_export)));
       }
       return;
     }
@@ -91,18 +93,17 @@ class _HomeDependienteScreenState extends State<HomeDependienteScreen> {
   }
 
   void _showDeleteConfirmation() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.cardColor,
-        title: const Text('Eliminar Ventas'),
-        content: const Text(
-          '¿Está seguro de eliminar todas sus ventas? Esta acción no se puede deshacer.',
-        ),
+        title: Text(l10n.delete_sales_title),
+        content: Text(l10n.delete_all_imported_confirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancelar'),
+            child: Text(l10n.cancel_button),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -114,12 +115,12 @@ class _HomeDependienteScreenState extends State<HomeDependienteScreen> {
                 authProvider.currentUser!.id,
               );
               if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Ventas eliminadas')),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(l10n.sales_deleted)));
               }
             },
-            child: const Text('Eliminar'),
+            child: Text(l10n.delete_button),
           ),
         ],
       ),

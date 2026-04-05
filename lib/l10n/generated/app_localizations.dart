@@ -10,6 +10,7 @@ import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
 import 'app_localizations_it.dart';
+import 'app_localizations_ja.dart';
 import 'app_localizations_pt.dart';
 import 'app_localizations_ru.dart';
 
@@ -104,6 +105,7 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('it'),
+    Locale('ja'),
     Locale('pt'),
     Locale('ru'),
   ];
@@ -462,6 +464,36 @@ abstract class AppLocalizations {
   /// **'MLC - Peso Convertible'**
   String get currency_mlc;
 
+  /// No description provided for @currency_gbp.
+  ///
+  /// In es, this message translates to:
+  /// **'GBP - Libra Esterlina'**
+  String get currency_gbp;
+
+  /// No description provided for @currency_cad.
+  ///
+  /// In es, this message translates to:
+  /// **'CAD - Dólar Canadiense'**
+  String get currency_cad;
+
+  /// No description provided for @currency_jpy.
+  ///
+  /// In es, this message translates to:
+  /// **'JPY - Yen Japonés'**
+  String get currency_jpy;
+
+  /// No description provided for @currency_aud.
+  ///
+  /// In es, this message translates to:
+  /// **'AUD - Dólar Australiano'**
+  String get currency_aud;
+
+  /// No description provided for @currency_chf.
+  ///
+  /// In es, this message translates to:
+  /// **'CHF - Franco Suizo'**
+  String get currency_chf;
+
   /// No description provided for @currency_sat.
   ///
   /// In es, this message translates to:
@@ -773,6 +805,126 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'MLC - Peso Convertible'**
   String get mlc_full_name;
+
+  /// No description provided for @no_sales_to_export.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay ventas para exportar'**
+  String get no_sales_to_export;
+
+  /// No description provided for @sales_deleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Ventas eliminadas'**
+  String get sales_deleted;
+
+  /// No description provided for @employee.
+  ///
+  /// In es, this message translates to:
+  /// **'Dependiente'**
+  String get employee;
+
+  /// No description provided for @delete_sale_confirm.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Eliminar esta venta?'**
+  String get delete_sale_confirm;
+
+  /// No description provided for @delete_sales_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar Ventas'**
+  String get delete_sales_title;
+
+  /// No description provided for @import_sales_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Importar Ventas'**
+  String get import_sales_title;
+
+  /// No description provided for @invalid_price.
+  ///
+  /// In es, this message translates to:
+  /// **'Precio inválido'**
+  String get invalid_price;
+
+  /// No description provided for @enter_product_and_price.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese producto y precio'**
+  String get enter_product_and_price;
+
+  /// No description provided for @empty_cart.
+  ///
+  /// In es, this message translates to:
+  /// **'Carrito vacío'**
+  String get empty_cart;
+
+  /// No description provided for @configure_api_in_settings.
+  ///
+  /// In es, this message translates to:
+  /// **'Configure API en Settings'**
+  String get configure_api_in_settings;
+
+  /// No description provided for @error_creating_invoice.
+  ///
+  /// In es, this message translates to:
+  /// **'Error creando invoice'**
+  String get error_creating_invoice;
+
+  /// No description provided for @payment_received.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Pago recibido!'**
+  String get payment_received;
+
+  /// No description provided for @payment_error.
+  ///
+  /// In es, this message translates to:
+  /// **'Error en pago'**
+  String get payment_error;
+
+  /// No description provided for @waiting_for_payment.
+  ///
+  /// In es, this message translates to:
+  /// **'Esperando Pago'**
+  String get waiting_for_payment;
+
+  /// No description provided for @cobrar.
+  ///
+  /// In es, this message translates to:
+  /// **'COBRAR'**
+  String get cobrar;
+
+  /// No description provided for @copiado.
+  ///
+  /// In es, this message translates to:
+  /// **'Copiado'**
+  String get copiado;
+
+  /// No description provided for @compartir.
+  ///
+  /// In es, this message translates to:
+  /// **'Compartir'**
+  String get compartir;
+
+  /// No description provided for @pending_sale_confirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Tiene una venta pendiente. ¿Desea retomarla?'**
+  String get pending_sale_confirm;
+
+  /// No description provided for @retomar.
+  ///
+  /// In es, this message translates to:
+  /// **'Retomar'**
+  String get retomar;
+
+  /// No description provided for @discard_confirm.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Eliminar todas las ventas importadas?'**
+  String get discard_confirm;
 }
 
 class _AppLocalizationsDelegate
@@ -791,6 +943,7 @@ class _AppLocalizationsDelegate
     'es',
     'fr',
     'it',
+    'ja',
     'pt',
     'ru',
   ].contains(locale.languageCode);
@@ -812,6 +965,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsFr();
     case 'it':
       return AppLocalizationsIt();
+    case 'ja':
+      return AppLocalizationsJa();
     case 'pt':
       return AppLocalizationsPt();
     case 'ru':

@@ -9,6 +9,7 @@ import '../widgets/cart_item_tile.dart';
 import '../widgets/total_display.dart';
 import '../widgets/currency_selector.dart';
 import '../widgets/qr_display.dart';
+import '../l10n/generated/app_localizations.dart';
 
 class SaleScreen extends StatefulWidget {
   const SaleScreen({super.key});
@@ -33,13 +34,14 @@ class _SaleScreenState extends State<SaleScreen> {
   }
 
   void _agregarProducto() async {
+    final l10n = AppLocalizations.of(context)!;
     final nombre = _productoController.text.trim();
     final precioTxt = _precioController.text.trim();
 
     if (nombre.isEmpty || precioTxt.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ingrese producto y precio')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.enter_product_and_price)));
       return;
     }
 
@@ -47,7 +49,7 @@ class _SaleScreenState extends State<SaleScreen> {
     if (precio == null || precio <= 0) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Precio inválido')));
+      ).showSnackBar(SnackBar(content: Text(l10n.invalid_price)));
       return;
     }
 
@@ -63,13 +65,17 @@ class _SaleScreenState extends State<SaleScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text('${l10n.error_generic}: $e'),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     }
   }
 
   Future<void> _crearInvoice() async {
+    final l10n = AppLocalizations.of(context)!;
     final cart = context.read<CartProvider>();
     final auth = context.read<AuthProvider>();
     final user = auth.currentUser;
@@ -78,14 +84,14 @@ class _SaleScreenState extends State<SaleScreen> {
     if (cart.totalSats <= 0) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Carrito vacío')));
+      ).showSnackBar(SnackBar(content: Text(l10n.empty_cart)));
       return;
     }
 
     if (user?.lndhubUrl == null || user?.lndhubCreds == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Configure API en Settings')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.configure_api_in_settings)));
       return;
     }
 
@@ -134,7 +140,7 @@ class _SaleScreenState extends State<SaleScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error creando invoice: $e'),
+            content: Text('${l10n.error_creating_invoice}: $e'),
             backgroundColor: Colors.red,
           ),
         );
@@ -143,6 +149,7 @@ class _SaleScreenState extends State<SaleScreen> {
   }
 
   Future<void> _esperarPago(String paymentHash, String saleId) async {
+    final l10n = AppLocalizations.of(context)!;
     final cart = context.read<CartProvider>();
     final salesProvider = context.read<SalesProvider>();
     final auth = context.read<AuthProvider>();
@@ -165,8 +172,8 @@ class _SaleScreenState extends State<SaleScreen> {
             _pendingSaleId = null;
 
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('¡Pago recibido!'),
+              SnackBar(
+                content: Text(l10n.payment_received),
                 backgroundColor: Colors.green,
               ),
             );
@@ -180,7 +187,7 @@ class _SaleScreenState extends State<SaleScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error en pago: $e'),
+            content: Text('${l10n.payment_error}: $e'),
             backgroundColor: Colors.red,
           ),
         );
@@ -190,12 +197,13 @@ class _SaleScreenState extends State<SaleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final cart = context.watch<CartProvider>();
 
     if (_showPaymentSheet && _paymentRequest != null) {
       return Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBar(title: const Text('Esperando Pago')),
+        appBar: AppBar(title: Text(l10n.waiting_for_payment)),
         body: Center(
           child: QrDisplay(
             paymentRequest: _paymentRequest!,
@@ -213,7 +221,7 @@ class _SaleScreenState extends State<SaleScreen> {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
       appBar: AppBar(
-        title: const Text('Nueva Venta'),
+        title: Text(l10n.sale_title),
         actions: [
           if (cart.hasItems)
             IconButton(
@@ -306,7 +314,7 @@ class _SaleScreenState extends State<SaleScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: cart.hasItems ? _crearInvoice : null,
-                child: const Text('COBRAR'),
+                child: Text(l10n.cobrar),
               ),
             ),
           ),

@@ -187,6 +187,21 @@ class AppLocalizationsFr extends AppLocalizations {
   String get currency_mlc => 'MLC - Peso convertible';
 
   @override
+  String get currency_gbp => 'GBP - Livre sterling';
+
+  @override
+  String get currency_cad => 'CAD - Dollar canadien';
+
+  @override
+  String get currency_jpy => 'JPY - Yen japonais';
+
+  @override
+  String get currency_aud => 'AUD - Dollar australien';
+
+  @override
+  String get currency_chf => 'CHF - Franc suisse';
+
+  @override
   String get currency_sat => 'SAT - Satoshis';
 
   @override
@@ -344,4 +359,65 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Peso convertible';
+
+  @override
+  String get no_sales_to_export => 'Aucune vente à exporter';
+
+  @override
+  String get sales_deleted => 'Ventes supprimées';
+
+  @override
+  String get employee => 'Employé';
+
+  @override
+  String get delete_sale_confirm => 'Supprimer cette vente?';
+
+  @override
+  String get delete_sales_title => 'Supprimer Ventes';
+
+  @override
+  String get import_sales_title => 'Importer Ventes';
+
+  @override
+  String get invalid_price => 'Prix invalide';
+
+  @override
+  String get enter_product_and_price => 'Entrez produit et prix';
+
+  @override
+  String get empty_cart => 'Panier vide';
+
+  @override
+  String get configure_api_in_settings => 'Configurez l\'API dans Paramètres';
+
+  @override
+  String get error_creating_invoice => 'Erreur création invoice';
+
+  @override
+  String get payment_received => 'Paiement reçu!';
+
+  @override
+  String get payment_error => 'Erreur de paiement';
+
+  @override
+  String get waiting_for_payment => 'En attente de paiement';
+
+  @override
+  String get cobrar => 'PERCEVOIR';
+
+  @override
+  String get copiado => 'Copié';
+
+  @override
+  String get compartir => 'Partager';
+
+  @override
+  String get pending_sale_confirm =>
+      'Vous avez une vente en attente. Voulez-vous la reprendre?';
+
+  @override
+  String get retomar => 'Reprendre';
+
+  @override
+  String get discard_confirm => 'Supprimer toutes les ventes importées?';
 }

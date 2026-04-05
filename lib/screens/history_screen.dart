@@ -7,6 +7,7 @@ import '../models/sale.dart';
 import '../providers/auth_provider.dart';
 import '../providers/sales_provider.dart';
 import '../providers/cart_provider.dart';
+import '../l10n/generated/app_localizations.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -47,17 +48,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<AuthProvider>();
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
-      appBar: AppBar(title: const Text('Historial de Ventas')),
+      appBar: AppBar(title: Text(l10n.history_title)),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : _sales.isEmpty
-          ? const Center(
+          ? Center(
               child: Text(
-                'No hay ventas',
-                style: TextStyle(color: Colors.grey),
+                l10n.no_sales,
+                style: const TextStyle(color: Colors.grey),
               ),
             )
           : RefreshIndicator(
@@ -86,21 +88,22 @@ class _HistoryScreenState extends State<HistoryScreen> {
   }
 
   Future<void> _eliminarVenta(BuildContext context, String saleId) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.cardColor,
-        title: const Text('Eliminar Venta'),
-        content: const Text('¿Eliminar esta venta?'),
+        title: Text(l10n.delete_sale_confirm),
+        content: Text(l10n.delete_sale_confirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancelar'),
+            child: Text(l10n.cancel_button),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Eliminar'),
+            child: Text(l10n.delete_button),
           ),
         ],
       ),
@@ -141,6 +144,7 @@ class _SaleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final formattedDate = DateFormat('dd/MM/yyyy HH:mm').format(sale.fecha);
     final monedaEnum = Moneda.fromCodigo(sale.moneda);
 
@@ -243,7 +247,7 @@ class _SaleCard extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: onContinue,
                     icon: const Icon(Icons.play_arrow),
-                    label: const Text('Continuar'),
+                    label: Text(l10n.continue_sale),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.primaryColor,
                     ),
@@ -254,9 +258,9 @@ class _SaleCard extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: onDelete,
                     icon: const Icon(Icons.delete, color: Colors.red),
-                    label: const Text(
-                      'Descartar',
-                      style: TextStyle(color: Colors.red),
+                    label: Text(
+                      l10n.discard_sale,
+                      style: const TextStyle(color: Colors.red),
                     ),
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.red),

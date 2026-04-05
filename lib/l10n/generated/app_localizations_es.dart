@@ -187,6 +187,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String get currency_mlc => 'MLC - Peso Convertible';
 
   @override
+  String get currency_gbp => 'GBP - Libra Esterlina';
+
+  @override
+  String get currency_cad => 'CAD - Dólar Canadiense';
+
+  @override
+  String get currency_jpy => 'JPY - Yen Japonés';
+
+  @override
+  String get currency_aud => 'AUD - Dólar Australiano';
+
+  @override
+  String get currency_chf => 'CHF - Franco Suizo';
+
+  @override
   String get currency_sat => 'SAT - Satoshis';
 
   @override
@@ -342,4 +357,65 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Peso Convertible';
+
+  @override
+  String get no_sales_to_export => 'No hay ventas para exportar';
+
+  @override
+  String get sales_deleted => 'Ventas eliminadas';
+
+  @override
+  String get employee => 'Dependiente';
+
+  @override
+  String get delete_sale_confirm => '¿Eliminar esta venta?';
+
+  @override
+  String get delete_sales_title => 'Eliminar Ventas';
+
+  @override
+  String get import_sales_title => 'Importar Ventas';
+
+  @override
+  String get invalid_price => 'Precio inválido';
+
+  @override
+  String get enter_product_and_price => 'Ingrese producto y precio';
+
+  @override
+  String get empty_cart => 'Carrito vacío';
+
+  @override
+  String get configure_api_in_settings => 'Configure API en Settings';
+
+  @override
+  String get error_creating_invoice => 'Error creando invoice';
+
+  @override
+  String get payment_received => '¡Pago recibido!';
+
+  @override
+  String get payment_error => 'Error en pago';
+
+  @override
+  String get waiting_for_payment => 'Esperando Pago';
+
+  @override
+  String get cobrar => 'COBRAR';
+
+  @override
+  String get copiado => 'Copiado';
+
+  @override
+  String get compartir => 'Compartir';
+
+  @override
+  String get pending_sale_confirm =>
+      'Tiene una venta pendiente. ¿Desea retomarla?';
+
+  @override
+  String get retomar => 'Retomar';
+
+  @override
+  String get discard_confirm => '¿Eliminar todas las ventas importadas?';
 }

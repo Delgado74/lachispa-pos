@@ -187,6 +187,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get currency_mlc => 'MLC - Konvertibler Peso';
 
   @override
+  String get currency_gbp => 'GBP - Britisches Pfund';
+
+  @override
+  String get currency_cad => 'CAD - Kanadischer Dollar';
+
+  @override
+  String get currency_jpy => 'JPY - Japanischer Yen';
+
+  @override
+  String get currency_aud => 'AUD - Australischer Dollar';
+
+  @override
+  String get currency_chf => 'CHF - Schweizer Franken';
+
+  @override
   String get currency_sat => 'SAT - Satoshis';
 
   @override
@@ -345,4 +360,65 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Konvertierbar Peso';
+
+  @override
+  String get no_sales_to_export => 'Keine Verkäufe zum Exportieren';
+
+  @override
+  String get sales_deleted => 'Verkäufe gelöscht';
+
+  @override
+  String get employee => 'Mitarbeiter';
+
+  @override
+  String get delete_sale_confirm => 'Diesen Verkauf löschen?';
+
+  @override
+  String get delete_sales_title => 'Verkäufe löschen';
+
+  @override
+  String get import_sales_title => 'Verkäufe importieren';
+
+  @override
+  String get invalid_price => 'Ungültiger Preis';
+
+  @override
+  String get enter_product_and_price => 'Produkt und Preis eingeben';
+
+  @override
+  String get empty_cart => 'Warenkorb leer';
+
+  @override
+  String get configure_api_in_settings => 'API in Einstellungen konfigurieren';
+
+  @override
+  String get error_creating_invoice => 'Fehler beim Erstellen der Rechnung';
+
+  @override
+  String get payment_received => 'Zahlung erhalten!';
+
+  @override
+  String get payment_error => 'Zahlungsfehler';
+
+  @override
+  String get waiting_for_payment => 'Warten auf Zahlung';
+
+  @override
+  String get cobrar => 'ABRECHNEN';
+
+  @override
+  String get copiado => 'Kopiert';
+
+  @override
+  String get compartir => 'Teilen';
+
+  @override
+  String get pending_sale_confirm =>
+      'Sie haben einen ausstehenden Verkauf. Möchten Sie ihn fortsetzen?';
+
+  @override
+  String get retomar => 'Fortsetzen';
+
+  @override
+  String get discard_confirm => 'Alle importierten Verkäufe löschen?';
 }

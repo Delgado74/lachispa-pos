@@ -187,6 +187,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get currency_mlc => 'MLC - Конвертируемое песо';
 
   @override
+  String get currency_gbp => 'GBP - Британский фунт';
+
+  @override
+  String get currency_cad => 'CAD - Канадский доллар';
+
+  @override
+  String get currency_jpy => 'JPY - Японская иена';
+
+  @override
+  String get currency_aud => 'AUD - Австралийский доллар';
+
+  @override
+  String get currency_chf => 'CHF - Швейцарский франк';
+
+  @override
   String get currency_sat => 'SAT - Сатоши';
 
   @override
@@ -342,4 +357,65 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Конвертируемое песо';
+
+  @override
+  String get no_sales_to_export => 'Нет продаж для экспорта';
+
+  @override
+  String get sales_deleted => 'Продажи удалены';
+
+  @override
+  String get employee => 'Сотрудник';
+
+  @override
+  String get delete_sale_confirm => 'Удалить эту продажу?';
+
+  @override
+  String get delete_sales_title => 'Удалить продажи';
+
+  @override
+  String get import_sales_title => 'Импорт продаж';
+
+  @override
+  String get invalid_price => 'Неверная цена';
+
+  @override
+  String get enter_product_and_price => 'Введите товар и цену';
+
+  @override
+  String get empty_cart => 'Корзина пуста';
+
+  @override
+  String get configure_api_in_settings => 'Настройте API в Настройках';
+
+  @override
+  String get error_creating_invoice => 'Ошибка создания счета';
+
+  @override
+  String get payment_received => 'Платеж получен!';
+
+  @override
+  String get payment_error => 'Ошибка платежа';
+
+  @override
+  String get waiting_for_payment => 'Ожидание платежа';
+
+  @override
+  String get cobrar => 'ОПЛАТА';
+
+  @override
+  String get copiado => 'Скопировано';
+
+  @override
+  String get compartir => 'Поделиться';
+
+  @override
+  String get pending_sale_confirm =>
+      'У вас есть ожидающая продажа. Хотите ее продолжить?';
+
+  @override
+  String get retomar => 'Продолжить';
+
+  @override
+  String get discard_confirm => 'Удалить все импортированные продажи?';
 }

@@ -186,6 +186,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currency_mlc => 'MLC - Convertible Peso';
 
   @override
+  String get currency_gbp => 'GBP - British Pound';
+
+  @override
+  String get currency_cad => 'CAD - Canadian Dollar';
+
+  @override
+  String get currency_jpy => 'JPY - Japanese Yen';
+
+  @override
+  String get currency_aud => 'AUD - Australian Dollar';
+
+  @override
+  String get currency_chf => 'CHF - Swiss Franc';
+
+  @override
   String get currency_sat => 'SAT - Satoshis';
 
   @override
@@ -341,4 +356,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Convertible Peso';
+
+  @override
+  String get no_sales_to_export => 'No sales to export';
+
+  @override
+  String get sales_deleted => 'Sales deleted';
+
+  @override
+  String get employee => 'Employee';
+
+  @override
+  String get delete_sale_confirm => 'Delete this sale?';
+
+  @override
+  String get delete_sales_title => 'Delete Sales';
+
+  @override
+  String get import_sales_title => 'Import Sales';
+
+  @override
+  String get invalid_price => 'Invalid price';
+
+  @override
+  String get enter_product_and_price => 'Enter product and price';
+
+  @override
+  String get empty_cart => 'Empty cart';
+
+  @override
+  String get configure_api_in_settings => 'Configure API in Settings';
+
+  @override
+  String get error_creating_invoice => 'Error creating invoice';
+
+  @override
+  String get payment_received => 'Payment received!';
+
+  @override
+  String get payment_error => 'Payment error';
+
+  @override
+  String get waiting_for_payment => 'Waiting for Payment';
+
+  @override
+  String get cobrar => 'CHARGE';
+
+  @override
+  String get copiado => 'Copied';
+
+  @override
+  String get compartir => 'Share';
+
+  @override
+  String get pending_sale_confirm =>
+      'You have a pending sale. Do you want to resume it?';
+
+  @override
+  String get retomar => 'Resume';
+
+  @override
+  String get discard_confirm => 'Delete all imported sales?';
 }

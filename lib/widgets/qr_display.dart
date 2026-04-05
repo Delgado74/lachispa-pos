@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import '../core/theme/app_theme.dart';
+import '../l10n/generated/app_localizations.dart';
 
 class QrDisplay extends StatelessWidget {
   final String paymentRequest;
@@ -20,6 +21,7 @@ class QrDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -69,10 +71,10 @@ class QrDisplay extends StatelessWidget {
                     Clipboard.setData(ClipboardData(text: paymentRequest));
                     ScaffoldMessenger.of(
                       context,
-                    ).showSnackBar(const SnackBar(content: Text('Copiado')));
+                    ).showSnackBar(SnackBar(content: Text(l10n.copiado)));
                   },
                   icon: const Icon(Icons.copy, size: 18),
-                  label: const Text('Copiar'),
+                  label: Text(l10n.copy_button),
                 ),
               ),
               const SizedBox(width: 8),
@@ -82,7 +84,7 @@ class QrDisplay extends StatelessWidget {
                     Share.share(paymentRequest);
                   },
                   icon: const Icon(Icons.share, size: 18),
-                  label: const Text('Compartir'),
+                  label: Text(l10n.compartir),
                 ),
               ),
             ],
@@ -92,7 +94,7 @@ class QrDisplay extends StatelessWidget {
             OutlinedButton.icon(
               onPressed: onCancel,
               icon: const Icon(Icons.close, size: 18),
-              label: const Text('Cancelar'),
+              label: Text(l10n.cancel_button),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.red,
                 side: const BorderSide(color: Colors.red),

@@ -12,6 +12,7 @@ class HomeJefeScreen extends StatelessWidget {
   const HomeJefeScreen({super.key});
 
   Future<void> _importar(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
     try {
       final exportService = ExportService.instance;
       final data = await exportService.pickAndParseJson();
@@ -25,26 +26,26 @@ class HomeJefeScreen extends StatelessWidget {
           context: context,
           builder: (ctx) => AlertDialog(
             backgroundColor: AppTheme.cardColor,
-            title: const Text('Importar Ventas'),
+            title: Text(l10n.import_sales_title),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Dependiente: ${preview.dependienteNombre}'),
+                Text('${l10n.employee_name}: ${preview.dependienteNombre}'),
                 const SizedBox(height: 8),
-                Text('Ventas: ${preview.totalVentas}'),
+                Text('${l10n.total_sales}: ${preview.totalVentas}'),
                 const SizedBox(height: 8),
-                Text('Total sats: ${preview.totalSats}'),
+                Text('${l10n.total_sats_label}: ${preview.totalSats}'),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: const Text('Cancelar'),
+                child: Text(l10n.cancel_button),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.pop(ctx, true),
-                child: const Text('Importar'),
+                child: Text(l10n.import_button),
               ),
             ],
           ),
@@ -56,7 +57,7 @@ class HomeJefeScreen extends StatelessWidget {
 
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('$imported ventas importadas')),
+              SnackBar(content: Text('$imported ${l10n.sales_imported}')),
             );
           }
         }
@@ -64,23 +65,27 @@ class HomeJefeScreen extends StatelessWidget {
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text('${l10n.error_generic}: $e'),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     }
   }
 
   void _showDeleteConfirmation(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.cardColor,
-        title: const Text('Eliminar BD Importadas'),
-        content: const Text('¿Eliminar todas las ventas importadas?'),
+        title: Text(l10n.delete_imported_db),
+        content: Text(l10n.delete_all_imported_confirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancelar'),
+            child: Text(l10n.cancel_button),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -88,12 +93,12 @@ class HomeJefeScreen extends StatelessWidget {
               Navigator.pop(ctx);
               await context.read<SalesProvider>().deleteAllImportedSales();
               if (context.mounted) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('BD eliminadas')));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(l10n.imported_db_deleted)),
+                );
               }
             },
-            child: const Text('Eliminar'),
+            child: Text(l10n.delete_button),
           ),
         ],
       ),

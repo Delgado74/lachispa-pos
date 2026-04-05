@@ -187,6 +187,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get currency_mlc => 'MLC - Peso Conversível';
 
   @override
+  String get currency_gbp => 'GBP - Libra Esterlina';
+
+  @override
+  String get currency_cad => 'CAD - Dólar Canadense';
+
+  @override
+  String get currency_jpy => 'JPY - Iene Japonês';
+
+  @override
+  String get currency_aud => 'AUD - Dólar Australiano';
+
+  @override
+  String get currency_chf => 'CHF - Franco Suíço';
+
+  @override
   String get currency_sat => 'SAT - Satoshis';
 
   @override
@@ -342,4 +357,65 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get mlc_full_name => 'MLC - Peso Conversível';
+
+  @override
+  String get no_sales_to_export => 'Sem vendas para exportar';
+
+  @override
+  String get sales_deleted => 'Vendas excluídas';
+
+  @override
+  String get employee => 'Funcionário';
+
+  @override
+  String get delete_sale_confirm => 'Excluir esta venda?';
+
+  @override
+  String get delete_sales_title => 'Excluir Vendas';
+
+  @override
+  String get import_sales_title => 'Importar Vendas';
+
+  @override
+  String get invalid_price => 'Preço inválido';
+
+  @override
+  String get enter_product_and_price => 'Informe produto e preço';
+
+  @override
+  String get empty_cart => 'Carrinho vazio';
+
+  @override
+  String get configure_api_in_settings => 'Configure API em Configurações';
+
+  @override
+  String get error_creating_invoice => 'Erro ao criar invoice';
+
+  @override
+  String get payment_received => 'Pagamento recebido!';
+
+  @override
+  String get payment_error => 'Erro no pagamento';
+
+  @override
+  String get waiting_for_payment => 'Aguardando Pagamento';
+
+  @override
+  String get cobrar => 'COBRAR';
+
+  @override
+  String get copiado => 'Copiado';
+
+  @override
+  String get compartir => 'Compartilhar';
+
+  @override
+  String get pending_sale_confirm =>
+      'Você tem uma venda pendente. Deseja retomá-la?';
+
+  @override
+  String get retomar => 'Retomar';
+
+  @override
+  String get discard_confirm => 'Excluir todas as vendas importadas?';
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../core/theme/app_theme.dart';
 import '../core/services/lachispa_api_service.dart';
 import '../providers/auth_provider.dart';
+import '../l10n/generated/app_localizations.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -39,10 +40,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _testConnection() async {
+    final l10n = AppLocalizations.of(context)!;
     if (_urlController.text.isEmpty || _apiKeyController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Complete todos los campos')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.username_required_error)));
       return;
     }
 
@@ -69,10 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Configuración guardada'),
-            backgroundColor: Colors.green,
-          ),
+          SnackBar(content: Text(l10n.success), backgroundColor: Colors.green),
         );
       }
     } catch (e) {
@@ -84,11 +83,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (_showScanApi) {
       return Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         appBar: AppBar(
-          title: const Text('Escanear QR API'),
+          title: Text(l10n.scan_qr_button),
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () => setState(() => _showScanApi = false),
@@ -123,19 +123,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
-      appBar: AppBar(title: const Text('Configuración')),
+      appBar: AppBar(title: Text(l10n.settings_title)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'API Lachispa.me',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              l10n.server_settings,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              'Ingrese la API Key de su wallet',
+              l10n.api_key_not_found,
               style: TextStyle(color: Colors.grey[400]),
             ),
             const SizedBox(height: 24),
@@ -143,18 +143,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: OutlinedButton.icon(
                 onPressed: () => setState(() => _showScanApi = true),
                 icon: const Icon(Icons.qr_code_scanner),
-                label: const Text('Escanear QR API'),
+                label: Text(l10n.scan_qr_button),
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'O ingrese manualmente:',
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _urlController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'URL',
                 hintText: 'https://lachispa.me o http://192.168.1.x:5000',
               ),
@@ -184,7 +184,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      _connectionOk! ? 'Conexión exitosa' : 'Error de conexión',
+                      _connectionOk! ? l10n.success : l10n.error_generic,
                       style: TextStyle(
                         color: _connectionOk! ? Colors.green : Colors.red,
                       ),
@@ -202,7 +202,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         width: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Text('GUARDAR Y PROBAR'),
+                    : Text(l10n.save),
               ),
             ),
           ],

@@ -110,17 +110,18 @@ class POSApp extends StatelessWidget {
     if (pending.isEmpty || !context.mounted) return;
 
     final sale = pending.first;
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       barrierDismissible: false,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.cardColor,
-        title: Text('Venta Pendiente'),
+        title: Text(l10n.pending_sale_title),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Tienes una venta pendiente:'),
+            Text(l10n.pending_sale_message),
             SizedBox(height: 8),
             Text('≈ ${sale.totalSats} sats'),
             Text('\$${sale.totalFiat.toStringAsFixed(2)} ${sale.moneda}'),
@@ -129,11 +130,11 @@ class POSApp extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, null),
-            child: Text('Descartar'),
+            child: Text(l10n.discard_sale),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: Text('Continuar'),
+            child: Text(l10n.continue_sale),
           ),
         ],
       ),
