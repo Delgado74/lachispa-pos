@@ -157,6 +157,8 @@ class LanguageProvider extends ChangeNotifier {
           return {'code': 'it', 'name': 'Italiano', 'flag': '🇮🇹'};
         case 'ru':
           return {'code': 'ru', 'name': 'Русский', 'flag': '🇷🇺'};
+        case 'ja':
+          return {'code': 'ja', 'name': '日本語', 'flag': '🇯🇵'};
         default:
           return {
             'code': locale.languageCode,
