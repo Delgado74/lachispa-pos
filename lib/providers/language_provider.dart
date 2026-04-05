@@ -12,6 +12,7 @@ class LanguageProvider extends ChangeNotifier {
     Locale('fr', ''),
     Locale('it', ''),
     Locale('ru', ''),
+    Locale('ja', ''),
   ];
 
   Locale _currentLocale = const Locale('es', '');

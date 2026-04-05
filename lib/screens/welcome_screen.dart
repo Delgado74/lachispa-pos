@@ -151,57 +151,33 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   AnimatedBuilder(
                     animation: _titleAnimation,
                     builder: (context, child) {
-                      final l10n = AppLocalizations.of(context)!;
                       return Transform.translate(
                         offset: Offset(0, 50 * (1 - _titleAnimation.value)),
                         child: Opacity(
                           opacity: _titleAnimation.value,
-                          child: Column(
-                            children: [
-                              Text(
-                                l10n.welcome_title,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 42,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  shadows: [
-                                    Shadow(
-                                      offset: const Offset(0, 4),
-                                      blurRadius: 8,
-                                      color: const Color(
-                                        0xFF2D3FE7,
-                                      ).withValues(alpha: 0.5),
-                                    ),
-                                  ],
+                          child: Text(
+                            'La ChispaPOS',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              shadows: [
+                                Shadow(
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 8,
+                                  color: const Color(
+                                    0xFF2D3FE7,
+                                  ).withValues(alpha: 0.5),
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                l10n.welcome_subtitle,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 48,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppTheme.primaryColor,
-                                  shadows: [
-                                    Shadow(
-                                      offset: const Offset(0, 4),
-                                      blurRadius: 12,
-                                      color: AppTheme.primaryColor.withValues(
-                                        alpha: 0.5,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
                     },
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
                   AnimatedBuilder(
                     animation: _subtitleAnimation,
                     builder: (context, child) {
@@ -215,7 +191,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: Colors.white.withValues(alpha: 0.9),
                             ),
