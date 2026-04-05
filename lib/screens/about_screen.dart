@@ -71,7 +71,7 @@ class AboutScreen extends StatelessWidget {
             _FeatureItem(
               icon: Icons.attach_money,
               title: l10n.currency_settings,
-              description: 'CUP, MLC, USD, EUR, GBP, SATs',
+              description: 'CUP, MLC, USD, EUR, GBP, CAD, JPY, AUD, CHF, SATs',
             ),
             _FeatureItem(
               icon: Icons.currency_exchange,
