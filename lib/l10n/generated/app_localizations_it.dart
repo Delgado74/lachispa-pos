@@ -184,7 +184,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get currency_cup => 'CUP - Peso cubano';
 
   @override
-  String get currency_mlc => 'MLC - Peso convertibile';
+  String get currency_mlc => 'MLC - Valuta Convertibile';
+
+  @override
+  String get mlc_full_name => 'MLC - Valuta Convertibile (CBDC)';
 
   @override
   String get currency_gbp => 'GBP - Sterlina britannica';
@@ -354,9 +357,6 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get developed_with => 'Sviluppato con';
-
-  @override
-  String get mlc_full_name => 'MLC - Peso convertibile';
 
   @override
   String get no_sales_to_export => 'Nessuna vendita da esportare';

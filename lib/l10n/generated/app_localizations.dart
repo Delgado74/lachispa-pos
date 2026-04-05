@@ -461,8 +461,14 @@ abstract class AppLocalizations {
   /// No description provided for @currency_mlc.
   ///
   /// In es, this message translates to:
-  /// **'MLC - Peso Convertible'**
+  /// **'MLC - Moneda Convertible'**
   String get currency_mlc;
+
+  /// No description provided for @mlc_full_name.
+  ///
+  /// In es, this message translates to:
+  /// **'MLC - Moneda Convertible (CBDC)'**
+  String get mlc_full_name;
 
   /// No description provided for @currency_gbp.
   ///
@@ -799,12 +805,6 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Desarrollado con'**
   String get developed_with;
-
-  /// No description provided for @mlc_full_name.
-  ///
-  /// In es, this message translates to:
-  /// **'MLC - Peso Convertible'**
-  String get mlc_full_name;
 
   /// No description provided for @no_sales_to_export.
   ///

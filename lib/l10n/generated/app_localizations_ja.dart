@@ -183,7 +183,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get currency_cup => 'CUP - キューバペソ';
 
   @override
-  String get currency_mlc => 'MLC - 兌換ペソ';
+  String get currency_mlc => 'MLC - 兌換通貨';
+
+  @override
+  String get mlc_full_name => 'MLC - 兌換通貨 (CBDC)';
 
   @override
   String get currency_gbp => 'GBP - 英ポンド';
@@ -353,9 +356,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get developed_with => '開発技術';
-
-  @override
-  String get mlc_full_name => 'MLC - 兌換ペソ';
 
   @override
   String get no_sales_to_export => 'エクスポートする売上がありません';

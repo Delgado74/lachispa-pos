@@ -184,7 +184,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get currency_cup => 'CUP - Кубинское песо';
 
   @override
-  String get currency_mlc => 'MLC - Конвертируемое песо';
+  String get currency_mlc => 'MLC - Конвертируемая валюта';
+
+  @override
+  String get mlc_full_name => 'MLC - Конвертируемая валюта (ЦБВЦ)';
 
   @override
   String get currency_gbp => 'GBP - Британский фунт';
@@ -354,9 +357,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get developed_with => 'Разработано с';
-
-  @override
-  String get mlc_full_name => 'MLC - Конвертируемое песо';
 
   @override
   String get no_sales_to_export => 'Нет продаж для экспорта';
