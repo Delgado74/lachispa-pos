@@ -149,6 +149,13 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SafeArea(
               child: Column(
                 children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: _buildLanguageButton(context),
+                    ),
+                  ),
                   const Spacer(),
                   AnimatedBuilder(
                     animation: _titleAnimation,
@@ -216,8 +223,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     },
                   ),
                   const SizedBox(height: 48),
-                  _buildLanguageSelector(context),
-                  const SizedBox(height: 24),
                 ],
               ),
             ),
@@ -227,25 +232,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget _buildLanguageSelector(BuildContext context) {
+  Widget _buildLanguageButton(BuildContext context) {
     final languageProvider = context.watch<LanguageProvider>();
-    final currentLanguage = languageProvider.getCurrentLanguageDisplay();
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 48),
-      child: OutlinedButton.icon(
-        onPressed: () => _showLanguageSelector(context),
-        icon: Text(
-          languageProvider.getCurrentLanguageFlag(),
-          style: const TextStyle(fontSize: 20),
-        ),
-        label: Text(currentLanguage),
-        style: OutlinedButton.styleFrom(
-          foregroundColor: Colors.white.withValues(alpha: 0.8),
-          side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        ),
+    return IconButton(
+      onPressed: () => _showLanguageSelector(context),
+      icon: Text(
+        languageProvider.getCurrentLanguageFlag(),
+        style: const TextStyle(fontSize: 24),
       ),
+      tooltip: AppLocalizations.of(context)?.select_language ?? 'Language',
     );
   }
 
@@ -260,7 +256,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      builder: (ctx) => Padding(
+      builder: (ctx) => Container(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.5,
+        ),
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -275,29 +274,37 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               ),
             ),
             const SizedBox(height: 16),
-            ...languages.map(
-              (lang) => ListTile(
-                leading: Text(
-                  lang['flag']!,
-                  style: const TextStyle(fontSize: 24),
-                ),
-                title: Text(
-                  lang['name']!,
-                  style: TextStyle(
-                    color:
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: languages.length,
+                itemBuilder: (context, index) {
+                  final lang = languages[index];
+                  return ListTile(
+                    leading: Text(
+                      lang['flag']!,
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    title: Text(
+                      lang['name']!,
+                      style: TextStyle(
+                        color:
+                            languageProvider.currentLocale.languageCode ==
+                                lang['code']
+                            ? AppTheme.primaryColor
+                            : Colors.white,
+                      ),
+                    ),
+                    trailing:
                         languageProvider.currentLocale.languageCode ==
                             lang['code']
-                        ? AppTheme.primaryColor
-                        : Colors.white,
-                  ),
-                ),
-                trailing:
-                    languageProvider.currentLocale.languageCode == lang['code']
-                    ? const Icon(Icons.check, color: AppTheme.primaryColor)
-                    : null,
-                onTap: () {
-                  languageProvider.changeLanguage(Locale(lang['code']!));
-                  Navigator.pop(ctx);
+                        ? const Icon(Icons.check, color: AppTheme.primaryColor)
+                        : null,
+                    onTap: () {
+                      languageProvider.changeLanguage(Locale(lang['code']!));
+                      Navigator.pop(ctx);
+                    },
+                  );
                 },
               ),
             ),
