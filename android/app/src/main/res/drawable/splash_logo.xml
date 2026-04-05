@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    <!-- Background -->
+    <path
+        android:fillColor="#0F1419"
+        android:pathData="M0,0h240v240h-240z" />
+    <!-- Logo circle -->
+    <path
+        android:fillColor="#2D3FE7"
+        android:pathData="M120,60 A50,50 0 1,1 120,160 A50,50 0 1,1 120,60z" />
+    <!-- Inner circle -->
+    <path
+        android:fillColor="#5B73FF"
+        android:pathData="M120,75 A35,35 0 1,1 120,145 A35,35 0 1,1 120,75z" />
+    <!-- Lightning bolt -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M125,85 L110,115 L122,115 L115,145 L135,110 L123,110 L130,85 Z" />
+    <!-- POS text -->
+    <path
+        android:fillColor="#5B73FF"
+        android:pathData="M85,175 L85,195 L100,195 L100,190 Q105,195 115,195 Q125,195 125,185 Q125,175 115,172 Q105,169 100,174 L100,175 L85,175z M100,180 Q102,177 108,177 Q114,177 114,182 Q114,187 108,187 Q102,187 100,180z" />
+    <path
+        android:fillColor="#5B73FF"
+        android:pathData="M130,175 L145,175 L145,179 L135,179 L135,180 Q138,185 145,187 L145,192 Q138,190 132,186 L132,195 L130,195z" />
+    <path
+        android:fillColor="#5B73FF"
+        android:pathData="M150,175 L170,175 L170,178 L160,178 Q175,180 175,188 Q175,194 165,194 Q158,194 155,189 L155,194 L150,194z M155,180 L160,180 Q160,183 160,184 Q160,186 157,186 Q155,186 155,182z" />
+    <path
+        android:fillColor="#5B73FF"
+        android:pathData="M180,175 L195,175 L195,194 L185,194 L185,190 Q182,194 175,194 L175,175z M185,178 L185,185 Q188,182 192,182 Q195,182 195,186 Q195,189 190,189 L185,189z" />
+</vector>
