@@ -110,6 +110,8 @@ class LanguageProvider extends ChangeNotifier {
         return 'Italiano';
       case 'ru':
         return 'Русский';
+      case 'ja':
+        return '日本語';
       default:
         return 'Español';
     }
@@ -131,6 +133,8 @@ class LanguageProvider extends ChangeNotifier {
         return '🇮🇹';
       case 'ru':
         return '🇷🇺';
+      case 'ja':
+        return '🇯🇵';
       default:
         return '🇪🇸';
     }
