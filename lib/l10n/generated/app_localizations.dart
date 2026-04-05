@@ -245,13 +245,13 @@ abstract class AppLocalizations {
   /// No description provided for @delete_sales.
   ///
   /// In es, this message translates to:
-  /// **'ELIMINAR BD'**
+  /// **'ELIMINAR VENTAS'**
   String get delete_sales;
 
   /// No description provided for @delete_sales_subtitle.
   ///
   /// In es, this message translates to:
-  /// **'Borrar ventas importadas'**
+  /// **'Borrar todo el historial'**
   String get delete_sales_subtitle;
 
   /// No description provided for @delete_imported_db.

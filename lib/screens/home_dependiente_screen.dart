@@ -176,8 +176,8 @@ class _HomeDependienteScreenState extends State<HomeDependienteScreen> {
             const SizedBox(height: 12),
             _MenuCard(
               icon: Icons.delete_forever,
-              title: 'ELIMINAR MIS VENTAS',
-              subtitle: 'Borrar todo el historial',
+              title: l10n.delete_sales,
+              subtitle: l10n.delete_sales_subtitle,
               color: Colors.red,
               onTap: _showDeleteConfirmation,
             ),

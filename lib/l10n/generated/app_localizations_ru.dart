@@ -75,10 +75,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get view_history_subtitle => 'Все импортированные продажи';
 
   @override
-  String get delete_sales => 'УДАЛИТЬ БД';
+  String get delete_sales => 'УДАЛИТЬ ПРОДАЖИ';
 
   @override
-  String get delete_sales_subtitle => 'Удалить импортированные продажи';
+  String get delete_sales_subtitle => 'Удалить всю историю';
 
   @override
   String get delete_imported_db => 'Удалить импортированную БД';

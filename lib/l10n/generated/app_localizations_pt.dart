@@ -75,10 +75,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get view_history_subtitle => 'Todas as vendas importadas';
 
   @override
-  String get delete_sales => 'EXCLUIR BD';
+  String get delete_sales => 'EXCLUIR VENDAS';
 
   @override
-  String get delete_sales_subtitle => 'Excluir vendas importadas';
+  String get delete_sales_subtitle => 'Excluir todo o histórico';
 
   @override
   String get delete_imported_db => 'Excluir BD Importado';

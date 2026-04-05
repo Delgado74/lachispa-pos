@@ -75,10 +75,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get view_history_subtitle => 'Tutte le vendite importate';
 
   @override
-  String get delete_sales => 'ELIMINA DB';
+  String get delete_sales => 'ELIMINA VENDITE';
 
   @override
-  String get delete_sales_subtitle => 'Elimina vendite importate';
+  String get delete_sales_subtitle => 'Elimina tutta la cronologia';
 
   @override
   String get delete_imported_db => 'Elimina DB importato';

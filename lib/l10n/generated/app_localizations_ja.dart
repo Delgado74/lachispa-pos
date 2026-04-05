@@ -75,10 +75,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get view_history_subtitle => 'インポートされたすべての売上';
 
   @override
-  String get delete_sales => 'DB削除';
+  String get delete_sales => '売上を削除';
 
   @override
-  String get delete_sales_subtitle => 'インポートされた売上を削除';
+  String get delete_sales_subtitle => 'すべての履歴を削除';
 
   @override
   String get delete_imported_db => 'インポートDBを削除';
