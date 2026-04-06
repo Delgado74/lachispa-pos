@@ -198,6 +198,168 @@ class LachispaApiService {
       return false;
     }
   }
+
+  Future<InvoiceResult?> createInvoiceForLnurl({
+    required String lnurl,
+    required int amountSats,
+    required String memo,
+  }) async {
+    try {
+      String decodedUrl = lnurl;
+
+      if (lnurl.startsWith('LNURL1')) {
+        final decoded = _decodeLnurl(lnurl);
+        if (decoded == null) {
+          throw Exception('LNURL inválido');
+        }
+        decodedUrl = decoded;
+      } else if (lnurl.startsWith('LNURLW://') ||
+          lnurl.startsWith('lnurlw://')) {
+        decodedUrl = lnurl
+            .replaceFirst('LNURLW://', 'https://')
+            .replaceFirst('lnurlw://', 'https://');
+      }
+
+      String finalUrl = decodedUrl;
+      if (!finalUrl.startsWith('http')) {
+        finalUrl = 'https://$finalUrl';
+      }
+
+      if (!finalUrl.contains('?')) {
+        finalUrl = '$finalUrl?';
+      } else {
+        finalUrl = '$finalUrl&';
+      }
+      finalUrl =
+          '${finalUrl}amount=$amountSats&comment=${Uri.encodeComponent(memo)}';
+
+      print('[LNURL] Fetching: $finalUrl');
+
+      final response = await http
+          .get(Uri.parse(finalUrl))
+          .timeout(const Duration(seconds: 15));
+
+      print('[LNURL] Response: ${response.statusCode} - ${response.body}');
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        if (data['status'] == 'ERROR') {
+          final reason = data['reason'] ?? 'Error desconocido';
+          print('[LNURL] Error del servidor: $reason');
+          throw Exception(reason);
+        }
+
+        if (data['pr'] != null) {
+          final paymentRequest = data['pr'] as String;
+          final paymentHash = await _getPaymentHashFromRequest(paymentRequest);
+          return InvoiceResult(
+            paymentHash: paymentHash,
+            paymentRequest: paymentRequest,
+          );
+        }
+
+        if (data['tag'] == 'withdrawRequest') {
+          print('[LNURL] Es un withdrawRequest, creando invoice y enviando...');
+
+          final callback = data['callback'] as String;
+          final k1 = data['k1'] as String;
+
+          final myInvoice = await createInvoice(
+            amountSats: amountSats,
+            memo: memo,
+          );
+
+          if (myInvoice.paymentRequest.isEmpty) {
+            throw Exception('No se pudo crear la invoice');
+          }
+
+          String callbackUrl = callback;
+          if (!callbackUrl.contains('?')) {
+            callbackUrl = '$callbackUrl?';
+          } else {
+            callbackUrl = '$callbackUrl&';
+          }
+          callbackUrl =
+              '${callbackUrl}k1=$k1&pr=${Uri.encodeComponent(myInvoice.paymentRequest)}';
+
+          print('[LNURL] Enviando invoice al callback: $callbackUrl');
+
+          final callbackResponse = await http
+              .get(Uri.parse(callbackUrl))
+              .timeout(const Duration(seconds: 15));
+
+          print(
+            '[LNURL] Callback response: ${callbackResponse.statusCode} - ${callbackResponse.body}',
+          );
+
+          if (callbackResponse.statusCode == 200) {
+            final cbData = json.decode(callbackResponse.body);
+            if (cbData['success'] == true) {
+              return InvoiceResult(
+                paymentHash: myInvoice.paymentHash,
+                paymentRequest: myInvoice.paymentRequest,
+              );
+            }
+          }
+
+          return InvoiceResult(
+            paymentHash: myInvoice.paymentHash,
+            paymentRequest: myInvoice.paymentRequest,
+          );
+        }
+
+        if (data['success'] == true) {
+          return InvoiceResult(
+            paymentHash: 'lnurlw_${DateTime.now().millisecondsSinceEpoch}',
+            paymentRequest: '',
+          );
+        }
+      }
+
+      print('LNURLw response: ${response.statusCode} - ${response.body}');
+      throw Exception('Error del servidor LNURL');
+    } catch (e) {
+      print('Error creating invoice for LNURL: $e');
+      rethrow;
+    }
+  }
+
+  String? _decodeLnurl(String encoded) {
+    try {
+      final encodedPart = encoded.substring(6);
+      final padded = encodedPart.padRight(
+        encodedPart.length + (4 - encodedPart.length % 4) % 4,
+        '=',
+      );
+      final replaced = padded.replaceAll('-', '+').replaceAll('_', '/');
+      final decoded = base64Decode(replaced);
+      return String.fromCharCodes(decoded);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<String> _getPaymentHashFromRequest(String paymentRequest) async {
+    try {
+      final body = json.encode({'data': paymentRequest});
+      final response = await http
+          .post(
+            Uri.parse('$_baseUrl/api/v1/payments/decode'),
+            headers: {'Content-Type': 'application/json'},
+            body: body,
+          )
+          .timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body) as Map<String, dynamic>;
+        return data['payment_hash'] as String? ?? '';
+      }
+    } catch (e) {
+      print('Error getting payment hash: $e');
+    }
+    return '';
+  }
 }
 
 class InvoiceResult {

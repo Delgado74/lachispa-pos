@@ -10,6 +10,7 @@ class QrDisplay extends StatelessWidget {
   final double totalFiat;
   final int totalSats;
   final VoidCallback? onCancel;
+  final VoidCallback? onPayWithNfc;
 
   const QrDisplay({
     super.key,
@@ -17,6 +18,7 @@ class QrDisplay extends StatelessWidget {
     required this.totalFiat,
     required this.totalSats,
     this.onCancel,
+    this.onPayWithNfc,
   });
 
   @override
@@ -89,6 +91,21 @@ class QrDisplay extends StatelessWidget {
               ),
             ],
           ),
+          if (onPayWithNfc != null) ...[
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: onPayWithNfc,
+                icon: const Icon(Icons.nfc, size: 18),
+                label: Text(l10n.pay_with_nfc),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: const Color(0xFFF0A500),
+                  side: const BorderSide(color: Color(0xFFF0A500)),
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 12),
           if (onCancel != null)
             OutlinedButton.icon(

@@ -417,4 +417,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get discard_confirm => 'Delete all imported sales?';
+
+  @override
+  String get pay_with_nfc => 'Pay with NFC';
+
+  @override
+  String get nfc_not_available => 'NFC not available';
+
+  @override
+  String get nfc_ready => 'Bring device close to customer';
+
+  @override
+  String get nfc_payment_cancelled => 'NFC payment cancelled';
+
+  @override
+  String get nfc_error => 'NFC error';
+
+  @override
+  String get tap_to_pay => 'Tap to pay';
+
+  @override
+  String get nfc_reading => 'Reading NFC...';
+
+  @override
+  String get lnurl_error => 'Server error';
 }
