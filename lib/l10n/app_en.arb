@@ -146,5 +146,13 @@
   "compartir": "Share",
   "pending_sale_confirm": "You have a pending sale. Do you want to resume it?",
   "retomar": "Resume",
-  "discard_confirm": "Delete all imported sales?"
+  "discard_confirm": "Delete all imported sales?",
+  "pay_with_nfc": "Pay with NFC",
+  "nfc_not_available": "NFC not available",
+  "nfc_ready": "Bring device close to customer",
+  "nfc_payment_cancelled": "NFC payment cancelled",
+  "nfc_error": "NFC error",
+  "tap_to_pay": "Tap to pay",
+  "nfc_reading": "Reading NFC...",
+  "lnurl_error": "Server error"
 }

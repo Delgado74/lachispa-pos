@@ -925,6 +925,54 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'¿Eliminar todas las ventas importadas?'**
   String get discard_confirm;
+
+  /// No description provided for @pay_with_nfc.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagar con NFC'**
+  String get pay_with_nfc;
+
+  /// No description provided for @nfc_not_available.
+  ///
+  /// In es, this message translates to:
+  /// **'NFC no disponible'**
+  String get nfc_not_available;
+
+  /// No description provided for @nfc_ready.
+  ///
+  /// In es, this message translates to:
+  /// **'Acerque el dispositivo al cliente'**
+  String get nfc_ready;
+
+  /// No description provided for @nfc_payment_cancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago NFC cancelado'**
+  String get nfc_payment_cancelled;
+
+  /// No description provided for @nfc_error.
+  ///
+  /// In es, this message translates to:
+  /// **'Error NFC'**
+  String get nfc_error;
+
+  /// No description provided for @tap_to_pay.
+  ///
+  /// In es, this message translates to:
+  /// **'Tocar para pagar'**
+  String get tap_to_pay;
+
+  /// No description provided for @nfc_reading.
+  ///
+  /// In es, this message translates to:
+  /// **'Leyendo NFC...'**
+  String get nfc_reading;
+
+  /// No description provided for @lnurl_error.
+  ///
+  /// In es, this message translates to:
+  /// **'Error del servidor'**
+  String get lnurl_error;
 }
 
 class _AppLocalizationsDelegate
